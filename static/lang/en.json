@@ -319,12 +319,12 @@
         "name": "Keybind for mystifying selected tokens"
       },
       "npcMystifierPostfix": {
-        "hint": "Add text to postfix new name. defaults to '' (example: 'Creature').",
-        "name": "Word postfix"
+        "hint": "Add text to prefix new name with, defaults to '' (example: 'Unknown'), if this matches the name of a rollable table a random text result from this table will be used as the prefix instead.",
+        "name": "Word or rollable table postfix"
       },
       "npcMystifierPrefix": {
-        "hint": "Add text to prefix new name. defaults to '' (example: 'Unknown').",
-        "name": "Word prefix"
+        "hint": "Add text to prefix new name with, defaults to '' (example: 'Unknown'), if this matches the name of a rollable table a random text result from this table will be used as the prefix instead.",
+        "name": "Word or rollable table prefix"
       },
       "npcMystifierSkipRandomPropertyForUnique": {
         "hint": "Check to skip adding a random property when mystifying unique npcs.",
@@ -336,7 +336,7 @@
       },
       "npcMystifierAdjective": {
         "hint": "Adds a word from the rolltable as a prefix (Random property needs to be set to 'Adjective').",
-        "name": "Rollable table prefix"
+        "name": "Rolltable adjective"
       },
       "npcMystifierUseMystifiedNameInChat": {
         "hint": "(Experimental) Check to use mystified name inside chat messages by replacing the actor name with the mystified name.",

@@ -115,12 +115,12 @@
         "name": "Tangent för att mystifiera valda spelfigurer"
       },
       "npcMystifierPostfix": {
-        "hint": "Vad ska ett nytt namn postfixas med, default '' (exempel: 'Varelse').",
-        "name": "Ord att postfixa nytt namn med"
+        "hint": "Vad ska ett nytt namn postfixas med, default '' (exempel: 'Varelse'), om det är namnet på en slumptabell så används en textrad från den tabellen som postfix .",
+        "name": "Ord eller slumptabell att postfixa nytt namn med"
       },
       "npcMystifierPrefix": {
-        "hint": "Vad ska det nya namnet prefixas med, default '' (exempel: 'Okänd').",
-        "name": "Ord att prefixa nytt namn med"
+        "hint": "Vad ska det nya namnet prefixas med, default '' (exempel: 'Okänd'), om det är namnet på en slumptabell så används en textrad från den tabellen som prefix .",
+        "name": "Ord eller slumptabell att prefixa nytt namn med"
       },
       "npcMystifierSkipRandomPropertyForUnique": {
         "hint": "Låter bli att lägga till slumpmässigt fastighet för unika npcs.",

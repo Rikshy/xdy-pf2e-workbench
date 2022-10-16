@@ -99,12 +99,12 @@
         "name": "Mistificar Tokens"
       },
       "npcMystifierPostfix": {
-        "name": "Sufixo: Palavra",
-        "hint": "Adiciona um sufixo ao novo nome."
+        "name": "Sufixo: Palavra ou Tabela de Rolagem",
+        "hint": "Adiciona um sufixo ao novo nome. Se corresponder ao nome de uma tabela de rolagem, um resultado aleatório será usado como sufixo."
       },
       "npcMystifierPrefix": {
-        "hint": "Adiciona um prefixo ao novo nome.",
-        "name": "Prefixo: Palavra"
+        "hint": "Adiciona um prefixo ao novo nome. Se corresponder ao nome de uma tabela de rolagem, um resultado aleatório será usado como prefixo.",
+        "name": "Prefixo: Palavra ou Tabela de Rolagem"
       },
       "npcMystifierSkipRandomPropertyForUnique": {
         "name": "Não adicionar propriedade a PdMs únicos",

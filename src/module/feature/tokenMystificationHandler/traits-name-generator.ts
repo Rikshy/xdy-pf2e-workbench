@@ -12,22 +12,6 @@ let TRAITS: {
     ALIGNMENTS: string[];
 };
 
-async function fixesPreAndPost(settingkey: string): Promise<string> {
-    const fixSetting = game.settings.get(MODULENAME, settingkey);
-
-    // "null" check is due to a previous bug that may have left invalid data in text fields
-    if (fixSetting !== null && fixSetting !== "null" && fixSetting !== "") {
-        const draw = await game?.tables?.find((table) => table.name === fixSetting)?.draw({ displayChat: false });
-        if (draw && draw?.results[0]) {
-            return draw?.results[0].getChatText();
-        } else {
-            return <string>fixSetting;
-        }
-    } else {
-        return "";
-    }
-}
-
 function fillTraits() {
     TRAITS = {
         RARITIES: Object.keys(CONFIG.PF2E.rarityTraits),
@@ -39,7 +23,7 @@ function fillTraits() {
     };
 }
 
-function filterTraitList(traitsList: string[], prefix: string, postfix: string): string[] {
+function filterTraitList(traitsList: string[]): string[] {
     if (game.settings.get(MODULENAME, "npcMystifierBlacklist")) {
         const blocklist =
             (<string>game.settings.get(MODULENAME, "npcMystifierBlacklist")).toLocaleLowerCase().split(",") || null;
@@ -97,6 +81,9 @@ function filterTraitList(traitsList: string[], prefix: string, postfix: string):
             .filter((trait: string) => !TRAITS.ALIGNMENTS.includes(trait));
     }
 
+    const prefix = <string>(game.settings.get(MODULENAME, "npcMystifierPrefix") ?? "");
+    const postfix = <string>(game.settings.get(MODULENAME, "npcMystifierPostfix") ?? "");
+
     // Deduplicate using set
     return Array.from(
         new Set(
@@ -145,9 +132,7 @@ export async function generateNameFromTraits(token: TokenPF2e | TokenDocumentPF2
                 traitsList.push(size);
             }
 
-            const prefix = (await fixesPreAndPost("npcMystifierPrefix")) || "";
-            const postfix = (await fixesPreAndPost("npcMystifierPostfix")) || "";
-            traitsList = filterTraitList(traitsList, prefix, postfix);
+            traitsList = filterTraitList(traitsList);
 
             result = traitsList
                 .map((trait: string) => trait.trim())
@@ -172,7 +157,7 @@ export async function generateNameFromTraits(token: TokenPF2e | TokenDocumentPF2
                     }
 
                     const translations: any = game.i18n.translations.PF2E ?? {};
-                    return (trait !== prefix && trait !== postfix ? translations[`Trait${trait}`] : trait) ?? trait;
+                    return translations[`Trait${trait}`] ?? trait;
                 })
                 .join(" ");
         }
